@@ -1,14 +1,12 @@
 import cipher from "./cipher.js";
 
-console.log(cipher);
-
 const ENCODE_BUTTON_ID = "encode";
 const RESULT_DIV_ID = "encodeResult";
 const TEXT_INPUT_ID = "msg";
 
 function createEncodedParagraph(msg) {
   const encodedParagraph = document.createElement("p");
-  const encodedMsg = cipher.encode(msg);
+  const encodedMsg = cipher.encode(1, msg);
   const encodedParagraphContent = document.createTextNode(encodedMsg);
 
   encodedParagraph.appendChild(encodedParagraphContent);
@@ -17,9 +15,9 @@ function createEncodedParagraph(msg) {
 }
 
 function handleEncodeSubmission(resultContainer) {
-  const msg = document.getElementById(TEXT_INPUT_ID).value;
+  const msgToEncode = document.getElementById(TEXT_INPUT_ID).value;
 
-  const encodedParagraph = createEncodedParagraph(msg);
+  const encodedParagraph = createEncodedParagraph(msgToEncode);
 
   if (resultContainer.childNodes.length === 0) {
     resultContainer.appendChild(encodedParagraph);
