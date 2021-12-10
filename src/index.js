@@ -1,12 +1,13 @@
 import cipher from "./cipher.js";
 
-const ENCODE_BUTTON_ID = "encode";
+const CIPHER_FORM_ID = "cipherForm";
 const RESULT_DIV_ID = "encodeResult";
 const TEXT_INPUT_ID = "msg";
 const OFFSET_INPUT_ID = "offset";
+const PARAGRAPH = "p";
 
 function createEncodedParagraph(offset, msg) {
-  const encodedParagraph = document.createElement("p");
+  const encodedParagraph = document.createElement(PARAGRAPH);
   const encodedMsg = cipher.encode(offset, msg);
   const encodedParagraphContent = document.createTextNode(encodedMsg);
 
@@ -34,10 +35,11 @@ function handleEncodeSubmission(resultContainer) {
 }
 
 (function () {
-  const encodeButton = document.getElementById(ENCODE_BUTTON_ID);
+  const form = document.getElementById(CIPHER_FORM_ID);
   const encodedResultContainer = document.getElementById(RESULT_DIV_ID);
 
-  encodeButton.onclick = () => {
+  form.onsubmit = (event) => {
+    event.preventDefault();
     handleEncodeSubmission(encodedResultContainer);
   };
 })();
