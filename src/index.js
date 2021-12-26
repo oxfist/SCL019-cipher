@@ -16,6 +16,10 @@ function createEncodedParagraph(offset, msg) {
   return encodedParagraph;
 }
 
+function isEmptyContainer(container) {
+  return container.childNodes.length === 0;
+}
+
 function handleEncodeSubmission(resultContainer) {
   const msgToEncode = document.getElementById(TEXT_INPUT_ID).value;
   const offset = Number.parseInt(
@@ -24,7 +28,7 @@ function handleEncodeSubmission(resultContainer) {
 
   const encodedParagraph = createEncodedParagraph(offset, msgToEncode);
 
-  if (resultContainer.childNodes.length === 0) {
+  if (isEmptyContainer(resultContainer)) {
     resultContainer.appendChild(encodedParagraph);
   } else {
     resultContainer.replaceChild(
