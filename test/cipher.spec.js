@@ -1,5 +1,13 @@
 import cipher from "../src/cipher";
 
+/*
+  1. Alcance reducido, poco código y caminos más acotados
+  2. Preguntarnos qué deberíamos testear, cómo agrupar los casos posibles
+  3. Testear _happy path_ y _sad path_
+  4. Estructurar tests con patrón AAA (Arrange - Act - Assert)
+  5. Poner atención a test como documentación de nuestro código
+ */
+
 describe("cipher", () => {
   it("should be an object", () => {
     expect(typeof cipher).toBe("object");
@@ -11,10 +19,13 @@ describe("cipher", () => {
     });
 
     it('should return "HIJKLMNOPQRSTUVWXYZABCDEFG" for "ABCDEFGHIJKLMNOPQRSTUVWXYZ" with offset 33', () => {
+      // Arrange
       const expectedEncodedMsg = "HIJKLMNOPQRSTUVWXYZABCDEFG";
 
+      // Act
       const actualEncodedMsg = cipher.encode(33, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
+      // Assert
       expect(actualEncodedMsg).toBe(expectedEncodedMsg);
     });
 
