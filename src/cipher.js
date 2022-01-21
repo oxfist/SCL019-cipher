@@ -11,7 +11,9 @@ const encodeChar = (offset, char) => {
 
 const cipher = {
   encode: (offset, msg) => {
-    if (typeof offset !== Number || typeof msg !== String) {
+    console.log("Esto de abajo es un console log:");
+    console.log(typeof offset);
+    if (typeof offset !== 'number' || typeof msg !== 'string') {
       throw new TypeError("Wrong argument types");
     }
 
