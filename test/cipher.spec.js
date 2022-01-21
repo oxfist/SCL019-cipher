@@ -10,22 +10,6 @@ describe("cipher", () => {
       expect(typeof cipher.encode).toBe("function");
     });
 
-    it('should return "D" when encoding "A" with offset 3', () => {
-      const expectedEncodedMsg = "D";
-
-      const actualEncodedMsg = cipher.encode(3, "A");
-
-      expect(actualEncodedMsg).toBe(expectedEncodedMsg);
-    });
-
-    it('should return "A" when encoding "Z" with offset 1', () => {
-      const expectedEncodedMsg = "A";
-
-      const actualEncodedMsg = cipher.encode(1, "Z");
-
-      expect(actualEncodedMsg).toBe(expectedEncodedMsg);
-    });
-
     it('should return "HIJKLMNOPQRSTUVWXYZABCDEFG" for "ABCDEFGHIJKLMNOPQRSTUVWXYZ" with offset 33', () => {
       const expectedEncodedMsg = "HIJKLMNOPQRSTUVWXYZABCDEFG";
 
@@ -55,7 +39,7 @@ describe("cipher", () => {
     // });
   });
 
-  xdescribe("cipher.decode", () => {
+  describe("cipher.decode", () => {
     it("should be a function", () => {
       expect(typeof cipher.decode).toBe("function");
     });
