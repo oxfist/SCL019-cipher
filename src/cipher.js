@@ -11,16 +11,17 @@ const encodeChar = (offset, char) => {
 
 const decodeChar = (offset, char) => {
   const charCode = char.charCodeAt(0);
+  console.log(charCode);
   const zeroBasedCode = charCode - FIRST_LETTER_CODE;
-  const newCode = zeroBasedCode - offset;
+  console.log(zeroBasedCode);
+  const newCode = zeroBasedCode - (offset % 26) ;
+  console.log(newCode);
 
   return String.fromCharCode((newCode % ALPHABET_LENGTH) + FIRST_LETTER_CODE);
 };
 
 const cipher = {
   encode: (offset, msg) => {
-    console.log("Esto de abajo es un console log:");
-    console.log(typeof offset);
     if (typeof offset !== 'number' || typeof msg !== 'string') {
       throw new TypeError("Wrong argument types");
     }
